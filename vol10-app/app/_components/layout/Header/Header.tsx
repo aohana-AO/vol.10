@@ -1,6 +1,6 @@
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
-
+import LinkList from "./LinkList";
 export default function Header() {
     return (
         <header className="border-b border-gray-200">
@@ -9,6 +9,7 @@ export default function Header() {
                     <Link href={"/"} className="p-2 text-sm font-semibold md:text-2xl">
                         💻 3AI寄れば文殊の知恵
                     </Link>
+                    <LinkList />
                 </div>
                 <SignedIn>
                     <UserButton

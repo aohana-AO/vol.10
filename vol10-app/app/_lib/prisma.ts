@@ -84,3 +84,13 @@ export function createChat(roomId: number, userId: number, message: string) {
     });
     return chat;
 }
+export const createRooms = (name: string, description: string) => {
+    const prisma = new PrismaClient();
+    const room = prisma.room.create({
+        data: {
+            name: name,
+            description: description,
+        },
+    });
+    return room;
+};
