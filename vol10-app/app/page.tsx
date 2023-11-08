@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getUser } from "./_lib/clerk";
+import Loading from "./loading";
+import { Suspense } from "react";
+import Rooms from "./_components/Rooms";
 
 export default async function Home() {
   const user = await getUser();
@@ -43,6 +46,14 @@ export default async function Home() {
           className="my-4"
         />
       )}
+      <div className="my-20">
+        <Suspense fallback={<Loading />}>
+          <a id="rooms" className="mx-2 text-gray-600">
+            参加可能なルーム一覧
+          </a>
+          <Rooms />
+        </Suspense>
+      </div>
     </div>
   );
 }
