@@ -35,7 +35,6 @@ export default async function Room({ params }: { params: { id: string } }) {
             </div>
             <div className="my-6 md:my-8">
                 <Suspense fallback={<Loading />}>
-                    {/* @ts-expect-error Async Server Component */}
                     <Chats chats={chats} />
                     <Form
                         roomId={parseInt(params.id)}
