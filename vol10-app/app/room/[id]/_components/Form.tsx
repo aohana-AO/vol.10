@@ -47,7 +47,7 @@ export default function Form({
     }
 
     return (
-        <div className="my-10 bg-white">
+        <div className="my-10 bg-slate-400 fixed bottom-0 left-0 right-0 w-full">
             <form
                 className="flex items-center border-t border-gray-200 p-4"
                 action={handleSubmit}
