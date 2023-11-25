@@ -53,7 +53,7 @@ export default async function Chats({ chats }: { chats: Chat[] }) {
                                 {chat.name ?? "ゲスト"}
                             </p>
                         </div>
-                        <p className="mx-1 justify-self-stretch p-4 text-xs md:mx-4 md:text-sm">
+                        <p className="mx-1 p-4 text-xs md:mx-4 md:text-sm bg-blue-200 rounded-lg">
                             {chat.message}
                         </p>
                     </div>

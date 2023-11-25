@@ -9,7 +9,7 @@ export default async function Home() {
   const user = await getUser();
 
   return (
-    <div className="m-4">
+    <div className="m-4 mt-12">
       <div>
         <p className="mt-4 text-2xl font-semibold">
           こんにちは！{" "}
