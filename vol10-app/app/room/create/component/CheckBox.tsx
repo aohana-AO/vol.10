@@ -1,18 +1,30 @@
-import type { NextPage } from "next";
 import { useState } from "react";
 
 export default function CheckBox() {
-    return (
-       <>
-        <div className="flex mx-auto">
-            <input
-            // id={item.id}
-            type="checkbox"
-            // defaultChecked={item.checked}
-            // disabled={item.disabled}
-        />
-        <p>GPT</p>
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(event.target.checked);
+  };
+
+  return (
+    <>
+      <div className="flex-col mx-auto">
+        <div className="flex">
+          <input type="checkbox" onChange={handleCheckboxChange} />
+          <p>GPT</p>
         </div>
-      </> 
-    );
+        {isChecked && (
+          <>
+            <input list="tags" />
+            <datalist id="tags">
+              <option value="性格1"></option>
+              <option value="性格2"></option>
+              <option value="性格3"></option>
+            </datalist>
+          </>
+        )}
+      </div>
+    </>
+  );
 }
