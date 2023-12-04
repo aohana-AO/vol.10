@@ -10,14 +10,16 @@ export default function Sidebar() {
 
   if (!showSidebar) {
     return (
-      <button
-        className="flex flex-col justify-around h-6 w-6"
-        onClick={handleClick}
-      >
-        <span className="w-6 h-0.5 bg-white"></span>
-        <span className="w-6 h-0.5 bg-white"></span>
-        <span className="w-6 h-0.5 bg-white"></span>
-      </button>
+      <div className="mt-2">
+        <button
+          className="flex flex-col justify-around h-6 w-6"
+          onClick={handleClick}
+        >
+            <span className="w-6 h-0.5 bg-white"></span>
+            <span className="w-6 h-0.5 bg-white"></span>
+            <span className="w-6 h-0.5 bg-white"></span>
+        </button>
+      </div>
     );
   }
 
