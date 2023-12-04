@@ -10,15 +10,15 @@ export default async function Rooms() {
     return <div className="my-14">sorry... 参加可能なルームはありません🥹</div>;
 
   return (
-    <div className="flex flex-wrap justify-around px-4 py-7">
+    <div className="flex flex-wrap justify-start px-4 py-7">
       {rooms.map((room) => (
         <Link
           href={`/room/${room.id}`}
-          className="flex h-full flex-col justify-between rounded-3xl border text-left shadow hover:bg-gray-100 "
+          className="flex h-full mb-6 mr-6 flex-col justify-between rounded-3xl border text-left shadow hover:bg-gray-100 "
           key={room.id}
         >
           <div className="h-100 w-50 ">
-            <div className="flex rounded-t-3xl bg-green-200" >
+            <div className="flex rounded-t-3xl bg-blue-200" >
               <p className="mr-2 text-sm font-semibold text-blue-500 md:text-base p-4">
                 {room.name}
               </p>
@@ -30,8 +30,9 @@ export default async function Rooms() {
               title="Chatroom"
               width="200"
               height="100"
-              src="">
-            </iframe>
+              src={`http://localhost:3000/room/${room.id}`} 
+              className="rounded-b-3xl"
+              ></iframe>
             </main>
             {/* <p className="text-sm text-gray-500 pl-4">{room.description}</p> */}
             {/* <ChatsNum id={room.id} /> */}

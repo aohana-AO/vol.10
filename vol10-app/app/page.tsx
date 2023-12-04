@@ -9,7 +9,7 @@ export default async function Home() {
   const user = await getUser();
 
   return (
-    <div className="m-4 mt-12">
+    <div className="m-4 mt-12 w-full">
       <div>
         <p className="mt-4 text-2xl font-semibold">
           こんにちは！{" "}
@@ -46,9 +46,9 @@ export default async function Home() {
           className="my-4"
         />
       )}
-      <div className="my-20">
+      <div className="my-20 w-full">
         <Suspense fallback={<Loading />}>
-          <a id="rooms" className="mx-2 text-gray-600">
+          <a id="rooms" className="mx-2 text-[30px] text-gray-600 font-bold bg-blue-200">
             参加可能なルーム一覧
           </a>
           <Rooms />
