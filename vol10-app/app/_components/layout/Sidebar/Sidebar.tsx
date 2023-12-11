@@ -15,9 +15,9 @@ export default function Sidebar() {
           className="flex flex-col justify-around h-6 w-6"
           onClick={handleClick}
         >
-            <span className="w-6 h-0.5 bg-white"></span>
-            <span className="w-6 h-0.5 bg-white"></span>
-            <span className="w-6 h-0.5 bg-white"></span>
+          <span className="w-6 h-0.5 bg-white"></span>
+          <span className="w-6 h-0.5 bg-white"></span>
+          <span className="w-6 h-0.5 bg-white"></span>
         </button>
       </div>
     );
@@ -29,9 +29,15 @@ export default function Sidebar() {
         <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-0.5 bg-white"></span>
       </button>
       <ul>
-        <li className="text-white">Item 1</li>
-        <li className="text-white">Item 2</li>
-        <li className="text-white">Item 3</li>
+        <li className="text-white border border-white rounded-lg p-2 mb-2">
+          Item 1
+        </li>
+        <li className="text-white border border-white rounded-lg p-2 mb-2">
+          Item 2
+        </li>
+        <li className="text-white border border-white rounded-lg p-2 mb-2">
+          Item 3
+        </li>
       </ul>
     </div>
   );
