@@ -14,7 +14,7 @@ export default async function Rooms() {
       {rooms.map((room) => (
         <Link
           href={`/room/${room.id}`}
-          className="flex h-full mb-9 mr-7 ml-7 flex-col justify-between rounded-3xl border text-left shadow hover:bg-gray-100 "
+          className="flex h-full mb-9 mr-5 ml-5 flex-col justify-between rounded-3xl border text-left shadow hover:bg-gray-100 "
           key={room.id}
         >
           <div className="h-300 w-400 ">
@@ -28,8 +28,8 @@ export default async function Rooms() {
               <iframe
                 id="Chatroom"
                 title="Chatroom"
-                width="350"
-                height="250"
+                width="400"
+                height="300"
                 src={`http://localhost:3000/room/${room.id}`}
                 className="rounded-b-3xl"
               ></iframe>

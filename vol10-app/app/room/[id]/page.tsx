@@ -8,43 +8,43 @@ import Chats from "./_components/Chats";
 import Form from "./_components/Form";
 
 export default async function Room({ params }: { params: { id: string } }) {
-    const room = await getRoomById(parseInt(params.id));
-    if (!room) {
-        return <div>ルームが見つかりませんでした</div>;
-    }
+  const room = await getRoomById(parseInt(params.id));
+  if (!room) {
+    return <div>ルームが見つかりませんでした</div>;
+  }
 
-    const createdDate = room.createdAt ? formatDate(room.createdAt) : undefined;
+  const createdDate = room.createdAt ? formatDate(room.createdAt) : undefined;
 
-    const user = await getUser();
-    if (!user) {
-        redirect("/sign-in");
-    }
-    const userName =
-        user.firstName && user.firstName !== "" ? user.firstName : "ゲスト";
+  const user = await getUser();
+  if (!user) {
+    redirect("/sign-in");
+  }
+  const userName =
+    user.firstName && user.firstName !== "" ? user.firstName : "ゲスト";
 
-    const chats = await getChats(parseInt(params.id));
+  const chats = await getChats(parseInt(params.id));
 
-    return (
-        <div className="mx-4 text-center mt-12">
-            <div className="border-b border-b-gray-300 py-4 text-left">
-                <h2 className="my-2 text-base md:text-2xl">{room.name}</h2>
-                <div className="flex justify-between text-gray-500">
-                    <p className="text-xs md:text-sm">{room.description}</p>
-                    {createdDate && <p>作成日 : {createdDate}</p>}
-                </div>
-            </div>
-            <div className="my-6 md:my-8">
-                <Suspense fallback={<Loading />}>
-                    {/* @ts-expect-error Async Server Component */}
-                    <Chats chats={chats} />
-                    <Form
-                        roomId={parseInt(params.id)}
-                        uuid={user.id}
-                        username={userName}
-                        profileImageUrl={user.profileImageUrl}
-                    />
-                </Suspense>
-            </div>
+  return (
+    <div className="mx-4 text-center mt-12">
+      <div className="border-b border-b-gray-300 py-4 text-left">
+        <h2 className="my-2 text-base md:text-2xl">{room.name}</h2>
+        <div className="flex justify-between text-gray-500">
+          <p className="text-xs md:text-sm">{room.description}</p>
+          {createdDate && <p>作成日 : {createdDate}</p>}
         </div>
-    );
+      </div>
+      <div className="my-6 md:my-8">
+        <Suspense fallback={<Loading />}>
+          {/* @ts-expect-error Async Server Component */}
+          <Chats chats={chats} />
+          <Form
+            roomId={parseInt(params.id)}
+            uuid={user.id}
+            username={userName}
+            profileImageUrl={user.profileImageUrl}
+          />
+        </Suspense>
+      </div>
+    </div>
+  );
 }
