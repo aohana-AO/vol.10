@@ -62,15 +62,19 @@ export default function Form({
           type="text"
           name="message"
           autoComplete="off"
-          className="flex-grow rounded-lg border px-4 py-2 focus:border-blue-300 focus:outline-none focus:ring"
+          className="flex-grow rounded-3xl border px-4 py-2 focus:border-blue-300 focus:outline-none focus:ring"
           placeholder="メッセージを入力..."
         />
         <button
           type="submit"
           disabled={ispending}
-          className="rounded-lg bg-blue-500 hover:bg-blue-400 px-2 md:px-4 py-2 text-white text-xs md:text-sm focus:border-blue-300 focus:outline-none focus:ring w-1/6"
+          className="rounded-lg bg-green-400 hover:bg-green-300 px-2 md:px-4 py-2 text-white text-xs md:text-sm focus:border-blue-300 focus:outline-none focus:ring w-13 h-13"
         >
-          送信
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+          />
+          <span className="material-symbols-outlined">send</span>
         </button>
       </form>
     </div>

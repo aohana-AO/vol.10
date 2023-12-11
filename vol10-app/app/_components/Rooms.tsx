@@ -24,16 +24,14 @@ export default async function Rooms() {
               </p>
               <JumpIcon />
             </div>
-            <main className="flex justify-center items-center">
-              <iframe
-                id="Chatroom"
-                title="Chatroom"
-                width="400"
-                height="300"
-                src={`http://localhost:3000/room/${room.id}`}
-                className="rounded-b-3xl"
-              ></iframe>
-            </main>
+            <iframe
+              id="Chatroom"
+              title="Chatroom"
+              width="400"
+              height="300"
+              src={`http://localhost:3000/room/${room.id}`}
+              className="rounded-b-3xl"
+            ></iframe>
             {/* <p className="text-sm text-gray-500 pl-4">{room.description}</p> */}
             {/* <ChatsNum id={room.id} /> */}
           </div>
