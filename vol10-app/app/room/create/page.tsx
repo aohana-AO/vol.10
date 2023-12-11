@@ -3,7 +3,7 @@
 import { createRoomAction } from "../../_lib/action";
 import { redirect } from "next/navigation";
 import { useState } from "react";
-import { CheckBox } from "./component/CheckBox";
+import { Llm, SubmitData, Character } from "../../types/Llm";
 
 export default function Create() {
   const [ispending, setIspending] = useState(false);
@@ -19,6 +19,13 @@ export default function Create() {
       formData.get("description"),
     ];
 
+    for (const item of Llm) {
+      // チェックボックスがチェックされている場合のみ値を取得
+      if (item.checked) {
+        const value = formData.get(item.id);
+      }
+    }
+
     if (
       !name ||
       typeof name !== "string" ||
@@ -30,10 +37,69 @@ export default function Create() {
       return;
     }
 
-    const room = await createRoomAction(name as string, description as string);
+    const room = await createRoomAction(
+      name as string,
+      description as string,
+    );
     setIspending(false);
     redirect(`/room/${room.id}`);
   }
+
+  //チェックボックスの中身
+  const [Llm, setLlm] = useState<Llm[]>([
+    {
+      id: "ChatGPT",
+      name: "ChatGPT",
+      checked: false,
+      disabled: false,
+    },
+    {
+      id: "Claude2",
+      name: "Claude2",
+      checked: false,
+      disabled: false,
+    },
+    {
+      id: "PaLM2",
+      name: "PaLM2",
+      checked: false,
+      disabled: false,
+    },
+    {
+      id: "LLaMA",
+      name: "LLaMA",
+      checked: false,
+      disabled: false,
+    },
+  ]);
+
+  //チェックボックスを表示
+  const handleCheckboxChange = (id: string) => {
+    setLlm((prevState) =>
+      prevState.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  };
+
+  //チェックボックスを選択した時に表示される性格の中身
+  const [Character, setCharacter] = useState<Character[]>([
+    {
+      id: "Character1",
+      name: "Character1",
+      selected: false,
+    },
+    {
+      id: "Character2",
+      name: "Character2",
+      selected: false,
+    },
+    {
+      id: "Character3",
+      name: "Character3",
+      selected: false,
+    },
+  ]);
 
   return (
     <div className="mx-4 my-10 flex bg-white mt-12">
@@ -75,7 +141,47 @@ export default function Create() {
               />
             </div>
           </div>
-          <CheckBox />
+          <div>
+            <label htmlFor="name" className="pl-8 font-bold">
+              🍊LLMを選択<span className="text-red-500">*</span>
+            </label>
+            <div className="pl-8 pt-4">
+              <div className="flex">
+                {Llm.map((item) => {
+                  return (
+                    <div key={item.id} className="flex-col pr-6">
+                      <div>
+                        <input
+                          id={item.id}
+                          type="checkbox"
+                          defaultChecked={item.checked}
+                          disabled={item.disabled}
+                          onChange={() => handleCheckboxChange(item.id)}
+                        />
+                        <label htmlFor={item.id}>{item.name}</label>
+                      </div>
+                      <div>
+                        {item.checked && (
+                          <>
+                            <select>
+                              {Character.map((item) => {
+                                return (
+                                  <option key={item.id} value={item.name}>
+                                    {item.name}
+                                  </option>
+                                );
+                              })}
+                            </select>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          {/* <CheckBox /> */}
           <div className="pb-4 mx-auto">
             <button
               type="submit"
