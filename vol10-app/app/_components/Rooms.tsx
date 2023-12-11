@@ -10,28 +10,28 @@ export default async function Rooms() {
     return <div className="my-14">sorry... 参加可能なルームはありません🥹</div>;
 
   return (
-    <div className="flex flex-wrap justify-start px-4 py-7">
+    <div className="flex flex-wrap justify-centers px-4 py-7 w-full">
       {rooms.map((room) => (
         <Link
           href={`/room/${room.id}`}
-          className="flex h-full mb-6 mr-6 flex-col justify-between rounded-3xl border text-left shadow hover:bg-gray-100 "
+          className="flex h-full mb-9 mr-7 ml-7 flex-col justify-between rounded-3xl border text-left shadow hover:bg-gray-100 "
           key={room.id}
         >
-          <div className="h-100 w-50 ">
-            <div className="flex rounded-t-3xl bg-blue-200" >
+          <div className="h-300 w-400 ">
+            <div className="flex rounded-t-3xl bg-blue-200">
               <p className="mr-2 text-sm font-semibold text-blue-500 md:text-base p-4">
                 {room.name}
               </p>
               <JumpIcon />
             </div>
             <main className="flex justify-center items-center">
-             <iframe
-              id="Chatroom"
-              title="Chatroom"
-              width="200"
-              height="100"
-              src={`http://localhost:3000/room/${room.id}`} 
-              className="rounded-b-3xl"
+              <iframe
+                id="Chatroom"
+                title="Chatroom"
+                width="350"
+                height="250"
+                src={`http://localhost:3000/room/${room.id}`}
+                className="rounded-b-3xl"
               ></iframe>
             </main>
             {/* <p className="text-sm text-gray-500 pl-4">{room.description}</p> */}

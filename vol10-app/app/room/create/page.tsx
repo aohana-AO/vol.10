@@ -40,8 +40,6 @@ export default function Create() {
     const room = await createRoomAction(
       name as string,
       description as string,
-      Llm,
-      Character
     );
     setIspending(false);
     redirect(`/room/${room.id}`);
