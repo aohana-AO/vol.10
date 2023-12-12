@@ -28,7 +28,7 @@ export default async function Room({ params }: { params: { id: string } }) {
   return (
     <>
     <Sidebar />
-    <div className="mx-4 text-center mt-0">
+    <div className="mx-4 text-center mt-4">
       <div className="border-b border-b-gray-300 py-4 text-left">
         <h2 className="my-2 text-base md:text-2xl">{room.name}</h2>
         <div className="flex justify-between text-gray-500">
