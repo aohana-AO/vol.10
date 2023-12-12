@@ -10,21 +10,21 @@ export default function Sidebar() {
 
   if (!showSidebar) {
     return (
-      <div className="mt-2">
+      <div className="mt-8">
         <button
-          className="flex flex-col justify-around h-6 w-6"
+          className="flex flex-col justify-around h-6 w-6 mt-3"
           onClick={handleClick}
         >
-          <span className="w-6 h-0.5 bg-white"></span>
-          <span className="w-6 h-0.5 bg-white"></span>
-          <span className="w-6 h-0.5 bg-white"></span>
+          <span className="w-6 h-0.5 bg-blue-900"></span>
+          <span className="w-6 h-0.5 bg-blue-900"></span>
+          <span className="w-6 h-0.5 bg-blue-900"></span>
         </button>
       </div>
     );
   }
 
   return (
-    <div className="fixed top-100 left-0 h-screen w-48 bg-gray-800 p-5 z-[50]">
+    <div className="fixed mt-1 top-100 left-0 h-screen w-48 bg-gray-800 bg-opacity-80 p-5 z-[50]">
       <button className="relative w-6 h-6" onClick={handleClick}>
         <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-0.5 bg-white"></span>
       </button>
