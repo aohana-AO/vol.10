@@ -17,6 +17,11 @@ export const getRoomById = (id: number) => {
             description: true,
             createdAt: true,
             chats: true,
+            chatgpt: true,
+            palm: true,
+            llama: true,
+            claude: true
+
         },
     });
     return room;
