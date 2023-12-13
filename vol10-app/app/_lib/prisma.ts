@@ -17,6 +17,11 @@ export const getRoomById = (id: number) => {
             description: true,
             createdAt: true,
             chats: true,
+            chatgpt: true,
+            palm: true,
+            llama: true,
+            claude: true
+
         },
     });
     return room;
@@ -84,12 +89,23 @@ export function createChat(roomId: number, userId: number, message: string) {
     });
     return chat;
 }
-export const createRooms = (name: string, description: string) => {
+export const createRooms = async (
+    name: string,
+    description: string,
+    chatgpt: number,
+    palm: number,
+    llama: number,
+    claude: number
+) => {
     const prisma = new PrismaClient();
     const room = prisma.room.create({
         data: {
             name: name,
             description: description,
+            chatgpt: chatgpt,
+            palm: palm,
+            llama: llama,
+            claude: claude
         },
     });
     return room;
