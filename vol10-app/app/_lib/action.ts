@@ -27,7 +27,10 @@ export const createChatAction = async (
     const responseMessage = "Hello!";
     // システムからの応答としてメッセージを送信
     // ここではシステムを表すユーザーIDを0とします（実際のアプリではシステムのユーザーIDに適切なものを設定する）
-    await createChat(roomId, 0, responseMessage);
+    await createChat(roomId, 100, responseMessage);
+    await createChat(roomId, 101, responseMessage);
+    await createChat(roomId, 102, responseMessage);
+    await createChat(roomId, 103, responseMessage);
     // パスの再検証
     revalidatePath(`/room/${roomId}`);
 
