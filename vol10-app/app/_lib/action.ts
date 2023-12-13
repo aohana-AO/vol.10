@@ -35,7 +35,14 @@ export const createChatAction = async (
     revalidatePath(`/room/${roomId}`);
 
 };
-export const createRoomAction = async (name: string, description: string) => {
-    const room = await createRooms(name, description);
+export const createRoomAction = async (
+    name: string,
+    description: string,
+    chatgpt: number,
+    palm: number,
+    llama: number,
+    claude: number
+) => {
+    const room = await createRooms(name, description, chatgpt, palm, llama, claude);
     return room;
 };

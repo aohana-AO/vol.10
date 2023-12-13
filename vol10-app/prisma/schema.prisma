@@ -21,6 +21,10 @@ model Room{
   name        String
   description String
   chats      Chat[]
+  chatgpt Int
+  palm Int
+  llama Int
+  claude Int
   createdAt DateTime @default(now())
 }
 
