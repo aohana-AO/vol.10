@@ -6,23 +6,25 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import Chats from "./_components/Chats";
 import Form from "./_components/Form";
+import Sidebar from "./_components/Sidebar";
 
 export default async function Room({ params }: { params: { id: string } }) {
-    const room = await getRoomById(parseInt(params.id));
-    if (!room) {
-        return <div>ルームが見つかりませんでした</div>;
-    }
+  const room = await getRoomById(parseInt(params.id));
+  if (!room) {
+    return <div>ルームが見つかりませんでした</div>;
+  }
 
-    const createdDate = room.createdAt ? formatDate(room.createdAt) : undefined;
+  const createdDate = room.createdAt ? formatDate(room.createdAt) : undefined;
 
-    const user = await getUser();
-    if (!user) {
-        redirect("/sign-in");
-    }
-    const userName =
-        user.firstName && user.firstName !== "" ? user.firstName : "ゲスト";
+  const user = await getUser();
+  if (!user) {
+    redirect("/sign-in");
+  }
+  const userName =
+    user.firstName && user.firstName !== "" ? user.firstName : "ゲスト";
 
-    const chats = await getChats(parseInt(params.id));
+  const chats = await getChats(parseInt(params.id));
+
 
     return (
         <div className="mx-4 text-center">
@@ -44,6 +46,21 @@ export default async function Room({ params }: { params: { id: string } }) {
                     />
                 </Suspense>
             </div>
+
         </div>
-    );
+        <div className="my-6 md:my-8">
+          <Suspense fallback={<Loading />}>
+            {/* @ts-expect-error Async Server Component */}
+            <Chats chats={chats} />
+            <Form
+              roomId={parseInt(params.id)}
+              uuid={user.id}
+              username={userName}
+              profileImageUrl={user.profileImageUrl}
+            />
+          </Suspense>
+        </div>
+      </div>
+    </>
+  );
 }
