@@ -1,7 +1,17 @@
 "use client";
 import React, { useState } from "react";
 
-export default function Sidebar() {
+export default function Sidebar({
+  chatgpt,
+  palm,
+  llama,
+  claude,
+}: {
+  chatgpt: number;
+  palm: number;
+  llama: number;
+  claude: number;
+}) {
   const [showSidebar, setShowSidebar] = useState(false);
 
   const handleClick = () => {
@@ -33,12 +43,39 @@ export default function Sidebar() {
         <span className="material-symbols-outlined text-white">close</span>
       </button>
       <ul>
-        <li className="text-white border border-white rounded-lg p-2 mb-2 mt-3">
-          <details>
-            <summary>選択したLLM名</summary>
-            <p className="text-xs pl-3">選択した性格と説明</p>
-          </details>
-        </li>
+        {chatgpt !== 0 && (
+          <li className="text-white border border-white rounded-lg p-2 mb-2 mt-3">
+            <details>
+              <summary>ChatGPT</summary>
+              {/* <p className="text-xs pl-3">選択した性格と説明</p> */}
+            </details>
+          </li>
+        )}
+
+        {palm !== 0 && (
+          <li className="text-white border border-white rounded-lg p-2 mb-2 mt-3">
+            <details>
+              <summary>PaLM</summary>
+              {/* <p className="text-xs pl-3">選択した性格と説明</p> */}
+            </details>
+          </li>
+        )}
+        {llama !== 0 && (
+          <li className="text-white border border-white rounded-lg p-2 mb-2 mt-3">
+            <details>
+              <summary>LLaMA2</summary>
+              {/* <p className="text-xs pl-3">選択した性格と説明</p> */}
+            </details>
+          </li>
+        )}
+        {claude !== 0 && (
+          <li className="text-white border border-white rounded-lg p-2 mb-2 mt-3">
+            <details>
+              <summary>Claude2</summary>
+              {/* <p className="text-xs pl-3">選択した性格と説明</p> */}
+            </details>
+          </li>
+        )}
       </ul>
     </div>
   );
